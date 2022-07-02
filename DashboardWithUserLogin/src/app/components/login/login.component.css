@@ -1,0 +1,20 @@
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+.container-fluid{
+display: flex;
+justify-content: center;
+padding-top: 100px;
+}
+
+.btn{
+    margin-left: 100px;
+    }
+.form-button{
+    padding-top: 15px;
+}
+.card-body{
+    box-shadow: 5px 10px 5px 5px;
+
+}
