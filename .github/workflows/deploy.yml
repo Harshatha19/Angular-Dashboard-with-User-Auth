@@ -1,0 +1,38 @@
+name: Deploy Angular App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # Trigger deployment on push to main
+
+permissions:
+  contents: write   # Needed so the action can push to gh-pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build -- --configuration production --base-href "/Angular-Dashboard-with-User-Auth/"
+
+      - name: Add .nojekyll
+        run: echo "" > dist/app-weather/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages        # Branch the action deploys to
+          folder: dist/app-weather # Angular build output folder
+          clean: true              # Remove old files
