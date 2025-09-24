@@ -31,5 +31,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages          # The branch to deploy to
-          folder: dist/app-weather  # The folder where Angular puts the build output
+          folder: dist/practice-dash  # The folder where Angular puts the build output
           clean: true               # Remove old files from gh-pages
