@@ -1,6 +1,60 @@
-body{margin-top:20px;
-    background:#eee;
-    }	
+/* Prevent overflow in home component */
+:host {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 15px 25px;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ensure panels don't overflow */
+.panel {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.panel-heading,
+.panel-footer {
+    overflow: hidden;
+}
+
+/* Responsive adjustments for panels */
+@media (max-width: 768px) {
     #page-wrapper {
-        padding: 15px 25px;
-    }                    
+        padding: 10px 15px;
+    }
+
+    .panel {
+        margin-bottom: 15px;
+    }
+
+    .announcement-heading {
+        font-size: 2em !important;
+    }
+
+    .fa-5x {
+        font-size: 3em !important;
+    }
+}
+
+@media (max-width: 576px) {
+    #page-wrapper {
+        padding: 8px 12px;
+    }
+
+    .announcement-heading {
+        font-size: 1.5em !important;
+    }
+
+    .fa-5x {
+        font-size: 2.5em !important;
+    }
+
+    .announcement-text {
+        font-size: 0.9em;
+    }
+}

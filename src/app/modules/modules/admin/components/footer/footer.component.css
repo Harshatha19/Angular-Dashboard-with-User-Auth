@@ -1,0 +1,80 @@
+/* Prevent footer overflow */
+.footer-container {
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Footer alignment with main content */
+.footer-container .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Prevent form elements from overflowing */
+.form-control {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.form-inline .form-control {
+    width: 75% !important;
+    max-width: 300px;
+}
+
+.input-group .form-control {
+    width: 100%;
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 1200px) {
+    .footer-container .container {
+        max-width: 960px;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer-container .container {
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container .container {
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .form-inline .form-control {
+        width: 100% !important;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .form-inline {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container .container {
+        max-width: 100%;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .col-md-6 {
+        margin-bottom: 1rem !important;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .form-control {
+        font-size: 0.9em;
+    }
+}

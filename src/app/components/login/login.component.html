@@ -1,20 +1,63 @@
 <div class="container-fluid h-100">
-    <div class="row h-100 justify-content-center">
-        <div class="card-body px-5">
-          <h1 class="LoginPage">Login</h1>
-<form [formGroup]="loginForm" (ngSubmit)="submitForm()">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
-    </div>
-    
-    <div class="form-button"><button type="submit" class="btn btn-primary">Submit</button></div>
-  </form>
-</div><!--card-body-->
-</div> <!--row-->
+  <div class="row h-100 justify-content-center">
+    <div class="card-body px-5">
+      <h1 class="LoginPage">Login</h1>
+
+      <!-- Error message display -->
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Demo credentials info -->
+      <div class="alert alert-info mb-3">
+        <small>
+          <strong>Demo Credentials:</strong><br>
+          Admin: admin@gmail.com / admin@123<br>
+          User: user@gmail.com / user@123<br>
+          Manager: manager@gmail.com / manager@123
+        </small>
+      </div>
+
+      <!-- Authentication Status Component -->
+      <app-auth-status></app-auth-status>
+
+      <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" [class.is-invalid]="email?.invalid && email?.touched"
+            [class.is-valid]="email?.valid && email?.touched" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email" formControlName="email">
+
+          <div *ngIf="email?.invalid && email?.touched" class="invalid-feedback">
+            <small *ngIf="email?.errors?.['required']">Email is required.</small>
+            <small *ngIf="email?.errors?.['email']">Please enter a valid email address.</small>
+          </div>
+
+          <small id="emailHelp" class="form-text text-muted" *ngIf="!email?.invalid || !email?.touched">
+            We'll never share your email with anyone else.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" [class.is-invalid]="password?.invalid && password?.touched"
+            [class.is-valid]="password?.valid && password?.touched" id="exampleInputPassword1" placeholder="Password"
+            formControlName="password">
+
+          <div *ngIf="password?.invalid && password?.touched" class="invalid-feedback">
+            <small *ngIf="password?.errors?.['required']">Password is required.</small>
+            <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+          </div>
+        </div>
+
+        <div class="form-button">
+          <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status"
+              aria-hidden="true"></span>
+            {{ isLoading ? 'Logging in...' : 'Login' }}
+          </button>
+        </div>
+      </form>
+    </div><!--card-body-->
+  </div> <!--row-->
 </div> <!--container-->

@@ -8,14 +8,16 @@ import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
-  {path: 'admin', component: AdminDashboardComponent, 
-  children: [
-   {path: 'home', component: HomeComponent},
-    {path: 'about', component: AboutComponent},
-    {path: 'contact', component: ContactComponent},
-    {path: '', redirectTo: '/admin/home', pathMatch: 'full'},
-  ],
-},
+  {
+    path: '',
+    component: AdminDashboardComponent,
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+    ],
+  },
 ];
 
 @NgModule({
